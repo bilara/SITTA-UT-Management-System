@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login SITTA-UT</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0d4a8a 0%, #1b6dc1 50%, #2389e8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .login-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    }
+
+    .logo-area {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .logo-area img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 3px solid #e8f1fb;
+      padding: 8px;
+      background: #f5f9ff;
+      margin-bottom: 0.75rem;
+    }
+
+    .logo-area h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1b6dc1;
+      margin-bottom: 4px;
+    }
+
+    .logo-area p {
+      font-size: 0.75rem;
+      color: #888;
+      letter-spacing: 0.3px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8f1fb;
+      color: #1b6dc1;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 1.5rem 0;
+    }
+
+    .field-group {
+      margin-bottom: 1rem;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap span {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      font-size: 16px;
+    }
+
+    .input-wrap input {
+      width: 100%;
+      padding: 11px 13px 11px 40px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #222;
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .input-wrap input:focus {
+      border-color: #1b6dc1;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(27,109,193,0.1);
+    }
+
+    .forgot {
+      text-align: right;
+      margin: -0.4rem 0 1.25rem;
+    }
+
+    .forgot a {
+      font-size: 0.75rem;
+      color: #1b6dc1;
+      text-decoration: none;
+    }
+
+    .forgot a:hover { text-decoration: underline; }
+
+    .btn-login {
+      width: 100%;
+      padding: 13px;
+      background: #1b6dc1;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(27,109,193,0.35);
+    }
+
+    .btn-login:hover {
+      background: #1558a0;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(27,109,193,0.4);
+    }
+
+    .btn-login:active { transform: translateY(0); }
+
+    .register-link {
+      text-align: center;
+      margin-top: 1.25rem;
+      font-size: 0.78rem;
+      color: #888;
+    }
+
+    .register-link a {
+      color: #1b6dc1;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .register-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="logo-area">
+      <img src="../img/ut.png" alt="Logo Universitas Terbuka">
+      <h1>SITTA UT</h1>
+      <p>Sistem Informasi Tata Kelola Bahan Ajar</p>
+      <span class="badge">Universitas Terbuka</span>
+    </div>
+
+    <hr class="divider">
+
+    <form id="loginForm">
+      <div class="field-group">
+        <label>Email</label>
+        <div class="input-wrap">
+          <span>✉</span>
+          <input type="email" id="email" placeholder="email@ut.ac.id" required>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <span>🔒</span>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+      </div>
+
+      <div class="forgot">
+        <a href="#" id="forgetLink">Lupa password?</a>
+      </div>
+
+      <button type="submit" class="btn-login">Masuk</button>
+    </form>
+
+    <div class="register-link">
+      Belum punya akun? <a href="#" id="registerLink">Daftar via MyUT</a>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
